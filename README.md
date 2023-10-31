@@ -16,20 +16,20 @@ UniversityEmployed is a Software-as-a-Service (SaaS) solution developed as part 
 
 ## Key Pain Points Addressed:
 
-- Facilitating PhD students and professors in posting project/research ideas.
+- Facilitating PhD students and professors in posting project/research ideas.  
   Many Ph.D. students and professors have project ideas but struggle to find a platform where they can seek help from undergraduate or graduate students.
-- Overcoming the lack of a centralized and regularly updated platform for research opportunities.
+- Overcoming the lack of a centralized and regularly updated platform for research opportunities.  
   While there are numerous resources for students to find research opportunities, there is no single platform where they can explore all of them. Additionally, many of these  websites suffer from outdated information. Often, positions get filled, but the posts remain active, leading to confusion and wasted effort for students who apply or try to contact professors for PhD students, believing the opportunity is still available.
-- Eliminating communication barriers between students and professors.
+- Eliminating communication barriers between students and professors.  
   Emailing professors can be daunting for students, and it often leads to unanswered emails, creating discouragement and missed opportunities.
 
 ## Key Features:
 
-- Professors can seamlessly add, edit, or remove research opportunities.
+- Professors can seamlessly add, edit, or remove research opportunities.  
   Professors will be able to add/edit/remove their projects and research positions on this platform. They will not have to worry about recruiting students interested in research by reaching out to them in various ways. emails, posting to various platforms 
-- Students can view, filter, and apply for research positions in real-time.
+- Students can view, filter, and apply for research positions in real-time.  
   On this webpage, students will be able to see all available projects and opportunities. They will be able to filter the positions based on their academic and personal interests. This makes it so that the student does not have to go to many different sites and email different teachers to find job opportunities. 
-- Integrated communication tool, ensuring timely and organized interactions between parties.
+- Integrated communication tool, ensuring timely and organized interactions between parties.  
   This web page will provide an effective communication link between students looking for research positions and professors looking for workers, which would make the job-finding process better for students and Professors.
 - Centralized database aggregating research roles from all Columbia colleges.
 
