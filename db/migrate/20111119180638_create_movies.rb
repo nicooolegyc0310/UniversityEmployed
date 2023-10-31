@@ -1,17 +1,20 @@
-class CreateMovies < ActiveRecord::Migration
+class CreateOpportunities < ActiveRecord::Migration
   def up
-    create_table :movies do |t|
+    create_table :opportunities do |t|
       t.string :title
-      t.string :rating
+      t.string :professors_name
+      t.string :department
       t.text :description
-      t.datetime :release_date
+      t.string :contact
+      t.text :requirements
+      t.string :duration
       # Add fields that let Rails automatically keep track
-      # of when movies are added or modified:
+      # of when opportunities are added or modified:
       t.timestamps
     end
   end
 
   def down
-    drop_table :movies
+    drop_table :opportunities
   end
 end
