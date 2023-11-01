@@ -4,22 +4,25 @@
 <table class="table table-striped col-md-12" id="opportunities">
   <thead>
     <tr>
-      <th> Title
-      </th>
+      <th> Title </th>
       <th>Description</th>
-      <th>
-      </th>
+      <th>Professor</th>
       <th>More Info</th>
     </tr>
   </thead>
   <tbody>
-    <% @opportunities.each do |opportunity| %>
+    <% @all_opportunities.each do |opportunity| %>
       <tr>
         <td>
           <%= opportunity.title %>
         </td>
         <td>
           <%= opportunity.description %>
+        </td>
+        <td>
+          <% if opportunity.contact.present? && opportunity.professor_name.present? %>
+            <%= link_to "#{opportunity.professor_name}", "mailto:#{opportunity.contact}?subject=Regarding #{opportunity.title}&body=Hello Professor #{opportunity.professor_name},%0A%0A" %>
+          <% end %>
         </td>
         <td>
           <%= link_to "More about #{opportunity.title}", opportunity_path(opportunity) %>

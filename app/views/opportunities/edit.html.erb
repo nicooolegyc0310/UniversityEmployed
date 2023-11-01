@@ -2,14 +2,25 @@
 <%= form_tag opportunities_path(@opportunity), :method => :put do %>
   <%= label :research_opportunity, :title, 'Title', class: 'col-form-label' %>
   <%= text_field :research_opportunity, 'title', class: 'form-control' %>
-  <%= label :research_opportunity, :position, 'Position', class: 'col-form-label' %>
-  <%= text_field :research_opportunity, 'position', class: 'form-control' %>
+
+  <%= label :research_opportunity, :professor_name, 'Professor', class: 'col-form-label' %>
+  <%= text_field :research_opportunity, 'professor_name', class: 'form-control' %>
+
+  <%= label :research_opportunity, :department, 'Deparment', class: 'col-form-label' %>
+  <%= text_field :research_opportunity, 'department', class: 'form-control' %>
+
   <%= label :research_opportunity, :description, 'Description', class: 'col-form-label' %>
-  <%= text_area :research_opportunity, 'description', class: 'form-control', rows: 3 %>
-  <%= label :research_opportunity, :start_date, 'Start Date', class: 'col-form-label' %>
-  <%= date_select :research_opportunity, :start_date, {}, class: 'form-control col-2 d-inline' %>
-  <%= label :research_opportunity, :end_date, 'End Date', class: 'col-form-label' %>
-  <%= date_select :research_opportunity, :end_date, {}, class: 'form-control col-2 d-inline' %>
+  <%= text_field :research_opportunity, 'description', class: 'form-control' %>
+
+  <%= label :research_opportunity, :contact, 'Contact', class: 'col-form-label' %>
+  <%= text_field :research_opportunity, 'contact', class: 'form-control' %>
+
+  <%= label :research_opportunity, :requirements, 'Requirements', class: 'col-form-label' %>
+  <%= text_field :research_opportunity, 'requirements', class: 'form-control' %>
+
+  <%= label :research_opportunity, :duration, 'Duration', class: 'col-form-label' %>
+  <%= text_field :research_opportunity, 'duration', class: 'form-control' %>
+
   <br/>
   <%= submit_tag 'Create Research Opportunity', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', opportunities_path, class: 'btn btn-secondary' %>

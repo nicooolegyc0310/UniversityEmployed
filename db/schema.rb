@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20111119180638) do
+ActiveRecord::Schema.define(version: 20231031000000) do
+  create_table "opportunities", force: :cascade do |t|
+    t.string "title"
+    t.string "professor_name"
+    t.string "department"
+    t.string "description"
+    t.string "contact"
+    t.string "requirements"
+    t.string "duration"
 
-  create_table "movies", force: :cascade do |t|
-    t.string   "title"
-    t.string   "rating"
-    t.text     "description"
-    t.datetime "release_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
 end

@@ -1,14 +1,14 @@
-class OpporitiesController < ApplicationController
+class OpportunitiesController < ApplicationController
   before_action :force_index_redirect, only: [:index]
 
   def show
     id = params[:id] # retrieve movie ID from URI route
-    @opportunity = Opportunities.find(id) # look up movie by unique ID
+    @opportunity = Opportunity.find(id) # look up movie by unique ID
     # will render app/views/movies/show.<extension> by default
   end
 
   def index
-    @all_opportunities = Opportunities.all
+    @all_opportunities = Opportunity.all
     #@movies = Movie.with_ratings(ratings_list, sort_by)
     #@ratings_to_show_hash = ratings_hash
     #@sort_by = sort_by
@@ -22,24 +22,30 @@ class OpporitiesController < ApplicationController
   end
 
   def create
-    @opportunity = Opportunities.create!(opportunity_params)
+    opportunity_params = params.require(:research_opportunity).permit(:title, :professor_name, :department, :description, :contact, :requirements, :duration)
+
+    byebug
+    @opportunity = Opportunity.create!(opportunity_params)
     flash[:notice] = "#{@opportunity.title} was successfully created."
     redirect_to opportunities_path
   end
 
   def edit
-    @opportunity = Opportunities.find params[:id]
+    @opportunity = Opportunity.find params[:id]
   end
 
   def update
-    @opportunity = Opportunities.find params[:id]
+    @opportunity = Opportunity.find params[:id]
+
+    opportunity_params = params.require(:research_opportunity).permit(:title, :professor_name, :department, :description, :contact, :requirements, :duration)
+
     @opportunity.update_attributes!(opportunity_params)
     flash[:notice] = "#{@opportunity.title} was successfully updated."
     redirect_to opportunity(@opportunity)
   end
 
   def destroy
-    @opportunity = Opportunities.find(params[:id])
+    @opportunity = Opportunity.find(params[:id])
     @opportunity.destroy
     flash[:notice] = "Opportunity '#{@opportunity.title}' deleted."
     redirect_to opportunities_path
@@ -47,13 +53,13 @@ class OpporitiesController < ApplicationController
 
   private
   
-  #def force_index_redirect
-  #  if !params.key?(:ratings) || !params.key?(:sort_by)
-  #    flash.keep
-  #    url = movies_path(sort_by: sort_by, ratings: ratings_hash)
-  #    redirect_to url
-  #  end
-  #end
+  def force_index_redirect
+    #if !params.key?(:ratings) || !params.key?(:sort_by)
+    #  flash.keep
+    #  url = movies_path(sort_by: sort_by, ratings: ratings_hash)
+    #  redirect_to url
+    #end
+  end
 
   #def ratings_list
   #  params[:ratings]&.keys || session[:ratings] || Movie.all_ratings
