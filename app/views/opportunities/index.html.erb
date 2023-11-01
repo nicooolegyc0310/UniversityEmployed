@@ -1,0 +1,31 @@
+<!--  This file is app/views/opportunities/index.html.erb -->
+<h2>All Opportunities</h2>
+
+<table class="table table-striped col-md-12" id="opportunities">
+  <thead>
+    <tr>
+      <th> Title
+      </th>
+      <th>Description</th>
+      <th>
+      </th>
+      <th>More Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @opportunities.each do |opportunity| %>
+      <tr>
+        <td>
+          <%= opportunity.title %>
+        </td>
+        <td>
+          <%= opportunity.description %>
+        </td>
+        <td>
+          <%= link_to "More about #{opportunity.title}", opportunity_path(opportunity) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add new opportunity', new_opportunity_path, class: 'btn btn-primary' %>

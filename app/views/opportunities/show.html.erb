@@ -1,0 +1,13 @@
+<!--  app/views/opportunities/show.html.erb -->
+<h2>Details about <em><%= @opportunity.title %></em></h2>
+
+<h3>Description:</h3>
+<p id="description">
+  <%= @opportunity.description %>
+</p>
+
+<div class="row">
+  <%= link_to 'Edit', edit_opportunity_path(@opportunity), class: 'btn btn-primary col-2' %>
+  <%= link_to 'Delete', opportunity_path(@opportunity), 'data-method': 'delete', 'data-confirm': 'Are you sure?', class: 'btn btn-danger col-2' %>
+  <%= link_to 'Back to movie list', opportunities_path, class: 'btn btn-primary col-2' %>
+</div>
