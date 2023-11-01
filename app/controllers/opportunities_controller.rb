@@ -11,14 +11,11 @@ class OpportunitiesController < ApplicationController
     # Filter the opportunities by the provided professor's name
     if params[:professor_name]
       @opportunities = Opportunity.where(professor_name: params[:professor_name])
-    # Filter the opportunities by the provided professor's ID
-    elsif params[:professor_id]
-      @opportunities = Opportunity.where(professor_id: params[:professor_id])
-    # If neither parameter is provided, retrieve all opportunities
+    # Else retrieve all opportunities
     else
       @opportunities = Opportunity.all
     end
-  end  
+  end
   
   def new
     # default: render 'new' template
