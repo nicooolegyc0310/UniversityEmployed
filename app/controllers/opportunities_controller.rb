@@ -8,15 +8,18 @@ class OpportunitiesController < ApplicationController
   end
 
   def index
-    @all_opportunities = Opportunity.all
-    #@movies = Movie.with_ratings(ratings_list, sort_by)
-    #@ratings_to_show_hash = ratings_hash
-    #@sort_by = sort_by
-    # remember the correct settings for next time
-    #session['ratings'] = ratings_list
-    #session['sort_by'] = @sort_by
-  end
-
+    # Filter the opportunities by the provided professor's name
+    if params[:professor_name]
+      @opportunities = Opportunity.where(professor_name: params[:professor_name])
+    # Filter the opportunities by the provided professor's ID
+    elsif params[:professor_id]
+      @opportunities = Opportunity.where(professor_id: params[:professor_id])
+    # If neither parameter is provided, retrieve all opportunities
+    else
+      @opportunities = Opportunity.all
+    end
+  end  
+  
   def new
     # default: render 'new' template
   end
