@@ -1,5 +1,5 @@
 class CreateOpportunities < ActiveRecord::Migration
-  def up
+  def change
     create_table :opportunities do |t|
       t.string :title
       t.string :professors_name
@@ -8,13 +8,7 @@ class CreateOpportunities < ActiveRecord::Migration
       t.string :contact
       t.text :requirements
       t.string :duration
-      # Add fields that let Rails automatically keep track
-      # of when opportunities are added or modified:
-      t.timestamps
+      t.timestamps null: false
     end
-  end
-
-  def down
-    drop_table :opportunities
   end
 end
