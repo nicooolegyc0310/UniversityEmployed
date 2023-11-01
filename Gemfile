@@ -33,4 +33,5 @@ end
 group :production do
   gem 'pg', '~> 0.2'
   gem 'rails_12factor'
+  gem 'sqlite3', '~> 1.3.6'
 end
