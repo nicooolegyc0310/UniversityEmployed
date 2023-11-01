@@ -7,6 +7,8 @@ gem 'rails', '4.2.11'
 gem 'sass-rails', '~> 5.0.3'
 gem 'uglifier', '>= 2.7.1'
 
+gem 'bcrypt', '~> 3.1.7'
+
 gem 'jquery-rails'
 
 group :development do
