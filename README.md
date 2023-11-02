@@ -10,6 +10,17 @@ A dedicated platform addressing challenges faced by PhD students, professors, an
 - **Yuchen Ge** (yg2838)
 - **Wenchao Zhai** (wz2602)
 
+## Build
+
+### Requirements
+- Ruby 2.6.6
+
+After cloning the repository run, `bundle install` to install all dependencies.
+Then, run a localhost server with `rails server -p 3000`.
+Go to `localhost:3000` to see our app!
+
+We also have a live version on heroku [here](https://spooky-treat-68203-97bbb523cd5a.herokuapp.com/)
+
 ## About the Project:
 
 UniversityEmployed is a Software-as-a-Service (SaaS) solution developed as part of the COMS W4152 Engineering Software-as-a-Service course. We aim to bridge the gap between academia and research by creating a centralized platform tailored for the Columbia University community.
