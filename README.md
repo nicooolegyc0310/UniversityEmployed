@@ -19,7 +19,7 @@ After cloning the repository run, `bundle install` to install all dependencies.
 Then, run a localhost server with `rails server -p 3000`.
 Go to `localhost:3000` to see our app!
 
-We also have a live version on heroku [here](https://spooky-treat-68203-97bbb523cd5a.herokuapp.com/)
+We also have a live version on heroku [here](https://spooky-treat-68203-97bbb523cd5a.herokuapp.com/).
 
 ## About the Project:
 
