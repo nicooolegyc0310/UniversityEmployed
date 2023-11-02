@@ -14,7 +14,11 @@ class OpportunitiesController < ApplicationController
       flash[:error] = "You must be logged in to access this page."
       redirect_to login_path
     end
-
+    if :user_id == nil
+      flash[:error] = "You must be logged in to access this page."
+      redirect_to login_path
+    end
+    
     @user_info = User.find session[:user_id]
     # Filter the opportunities by the provided professor's name
     if params[:professor_name]
@@ -30,9 +34,7 @@ class OpportunitiesController < ApplicationController
   end
 
   def create
-    opportunity_params = params.require(:research_opportunity).permit(:title, :professor_name, :department, :description, :contact, :requirements, :duration)
-
-    byebug
+    opportunity_params = params.require(:research_opportunity).permit(:title, :professor_name, :department, :description, :contact, :requirements, :duration, :capacity)
     @opportunity = Opportunity.create!(opportunity_params)
     flash[:notice] = "#{@opportunity.title} was successfully created."
     redirect_to opportunities_path

@@ -22,6 +22,9 @@
   <%= label :research_opportunity, :duration, 'Duration', class: 'col-form-label' %>
   <%= text_field :research_opportunity, 'duration', class: 'form-control' %>
 
+  <%= label :research_opportunity, :capacity, 'Capacity', class: 'col-form-label' %>
+  <%= number_field :research_opportunity, 'capacity', class: 'form-control' %>
+
   <br/>
   <%= submit_tag 'Create Research Opportunity', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', opportunities_path, class: 'btn btn-secondary' %>
