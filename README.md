@@ -10,7 +10,7 @@ A dedicated platform addressing challenges faced by PhD students, professors, an
 - **Yuchen Ge** (yg2838)
 - **Wenchao Zhai** (wz2602)
 
-## Build
+## Build:
 
 ### Requirements
 - Ruby 2.6.6
