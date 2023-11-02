@@ -16,6 +16,7 @@ A dedicated platform addressing challenges faced by PhD students, professors, an
 - Ruby 2.6.6
 
 After cloning the repository run, `bundle install` to install all dependencies.
+Setup the database with `rake db:reset` and `rake db:seed`.
 Then, run a localhost server with `rails server -p 3000`.
 Go to `localhost:3000` to see our app!
 
