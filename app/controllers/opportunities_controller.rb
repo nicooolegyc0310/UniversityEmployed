@@ -1,5 +1,7 @@
 class OpportunitiesController < ApplicationController
   before_action :force_index_redirect, only: [:index]
+  before_action :require_login, only: [:edit, :update, :show, :destroy]
+
 
   def show
     id = params[:id] # retrieve movie ID from URI route
@@ -8,6 +10,12 @@ class OpportunitiesController < ApplicationController
   end
 
   def index
+    unless session[:user_id]
+      flash[:error] = "You must be logged in to access this page."
+      redirect_to login_path
+    end
+
+    @user_info = User.find session[:user_id]
     # Filter the opportunities by the provided professor's name
     if params[:professor_name]
       @opportunities = Opportunity.where(professor_name: params[:professor_name])
@@ -76,4 +84,11 @@ class OpportunitiesController < ApplicationController
   #def sort_by
   #  params[:sort_by] || session[:sort_by] || 'id'
   #end
+
+  def require_login
+    unless session[:user_id]
+      flash[:error] = "You must be logged in to access this page."
+      redirect_to login_path
+    end
+  end
 end

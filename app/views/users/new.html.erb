@@ -6,7 +6,6 @@
     <%= f.label :password %> 
     <%= f.password_field :password %> <br>
 
-    <%= f.label :user_type %>
-    <%= f.text_field :user_type %> <br>
+    <%= f.collection_radio_buttons(:user_type, [['Professor', 'professor'], ['Student', 'student'], ['Grad Student', 'grad_student']], :second, :first) %><br>
     <%= f.submit "Create Account" %>
 <% end %>

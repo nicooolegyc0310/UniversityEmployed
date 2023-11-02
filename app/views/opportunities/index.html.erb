@@ -1,4 +1,5 @@
 <!--  This file is app/views/opportunities/index.html.erb -->
+<h3> Welcome back <%= @user_info.user_type.capitalize %> <%= @user_info.username %>. </h3>
 <h2>All Opportunities</h2>
 
 <%= form_tag(opportunities_path, method: "get", class: "form-inline my-4") do %>
@@ -15,6 +16,7 @@
       <th>Title</th>
       <th>Description</th>
       <th>Professor</th>
+      <th> Duration </th>
       <th>Capacity</th>
       <th>More Info</th>
     </tr>
@@ -33,6 +35,7 @@
             <%= link_to "#{opportunity.professor_name}", "mailto:#{opportunity.contact}?subject=Regarding #{opportunity.title}&body=Hello Professor #{opportunity.professor_name},%0A%0A" %>
           <% end %>
         </td>
+        <td><%= opportunity.duration %></td>
         <td><%= opportunity.capacity %></td>
         <td><%= link_to "More about #{opportunity.title}", opportunity_path(opportunity) %>
         </td>
@@ -40,4 +43,7 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Add new opportunity', new_opportunity_path, class: 'btn btn-primary' %>
+
+<% if @user_info.user_type == 'professor' %>
+  <%= link_to 'Add new opportunity', new_opportunity_path, class: 'btn btn-primary' %>
+<% end %>
