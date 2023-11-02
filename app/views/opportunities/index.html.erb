@@ -15,6 +15,7 @@
       <th>Title</th>
       <th>Description</th>
       <th>Professor</th>
+      <th>Capacity</th>
       <th>More Info</th>
     </tr>
   </thead>
@@ -32,8 +33,8 @@
             <%= link_to "#{opportunity.professor_name}", "mailto:#{opportunity.contact}?subject=Regarding #{opportunity.title}&body=Hello Professor #{opportunity.professor_name},%0A%0A" %>
           <% end %>
         </td>
-        <td>
-          <%= link_to "More about #{opportunity.title}", opportunity_path(opportunity) %>
+        <td><%= opportunity.capacity %></td>
+        <td><%= link_to "More about #{opportunity.title}", opportunity_path(opportunity) %>
         </td>
       </tr>
     <% end %>

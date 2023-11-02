@@ -10,6 +10,7 @@ opportunities = [
     contact: "luca@cs.columbia.edu",
     requirements: "Understanding of computer networks, Lab experience with system deployments.",
     duration: "Winter Semester 2023"
+    capacity: 2
   },
   {
     title: "Human-AI Interaction",
@@ -19,6 +20,7 @@ opportunities = [
     contact: "kaiser@cs.columbia.edu",
     requirements: "Experience in UI/UX design, Lab experience with user testing methodologies.",
     duration: "Spring Semester 2024"
+    capacity: 5
   },
   {
     title: "Augmented Reality Systems",
@@ -28,6 +30,7 @@ opportunities = [
     contact: "sedwards@cs.columbia.edu",
     requirements: "Experience in AR/VR development, Lab experience with AR devices and platforms.",
     duration: "Fall Semester 2023"
+    capacity: 3
   },
   {
     title: "Natural Language Processing for Web Data",
@@ -37,6 +40,7 @@ opportunities = [
     contact: "bauer@cs.columbia.edu",
     requirements: "Background in machine learning and NLP, Lab experience with web scraping and data processing.",
     duration: "Summer Semester 2023"
+    capacity: 4
   },
   {
     title: "Quantum Computing Algorithms",
@@ -46,6 +50,7 @@ opportunities = [
     contact: "josh@cs.columbia.edu",
     requirements: "Understanding of quantum mechanics, Lab experience in quantum computing environments.",
     duration: "Winter Semester 2023"
+    capacity: 2
   },
   {
     title: "Bioinformatics and Computational Biology",
@@ -55,6 +60,7 @@ opportunities = [
     contact: "andrew.blumberg@columbia.edu",
     requirements: "Experience with genomic data, Lab experience in bioinformatics software development.",
     duration: "Spring Semester 2024"
+    capacity: 5
   },
   {
     title: "Deep Learning for Natural Language Processing",
@@ -64,6 +70,7 @@ opportunities = [
     contact: "kathy@cs.columbia.edu",
     requirements: "Experience with Python, Familiarity with Tensorflow or PyTorch.",
     duration: "Fall Semester 2023"
+    capacity: 3
   }
 ]
 

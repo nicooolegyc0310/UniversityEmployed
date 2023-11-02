@@ -11,24 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231101131006) do
+ActiveRecord::Schema.define(version: 20231101195607) do
 
   create_table "opportunities", force: :cascade do |t|
     t.string   "title"
     t.string   "professor_name"
     t.string   "department"
-    t.string   "description"
+    t.text     "description"
     t.string   "contact"
-    t.string   "requirements"
+    t.text     "requirements"
     t.string   "duration"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "capacity"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
     t.string   "user_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "applications", force: :cascade do |t|
+    t.references :user, null: false, foreign_key: true
+    t.references :opportunity, null: false, foreign_key: true
+    t.string :status, default: 'pending'
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

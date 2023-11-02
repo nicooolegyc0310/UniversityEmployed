@@ -52,6 +52,10 @@ class OpportunitiesController < ApplicationController
   end
 
   private
+
+  def opportunity_params
+    params.require(:opportunity).permit(:title, :professor_name, :department, :description, :contact, :requirements, :duration, :capacity)
+  end
   
   def force_index_redirect
     #if !params.key?(:ratings) || !params.key?(:sort_by)
