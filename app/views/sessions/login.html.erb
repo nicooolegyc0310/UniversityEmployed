@@ -1,12 +1,64 @@
-<div>
-    <h2> Log In </h2>
+<style>
 
-    <%= form_tag '/login' do %>
-        Username: <%= text_field_tag :username %> <br>
-        Password: <%= password_field_tag :password %> <br>
-        
-        <%= submit_tag "Log In" %>
-    <% end %>
+body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
 
-    <p>Don't have an account? <%= link_to 'Sign up', signup_path %></p>
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.middle {
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+</style>
+
+<span class="border">
+
+<div class="middle">
+<%= form_tag '/login', :class=>"form-signin" do %>
+  <h2 class="text-center"> UniversityEmployeed </h2>
+  <%= image_tag("home.jpg", width: 330, class: "img-fluid mb-4") %>
+  <br>
+  <div class="form-outline mb-4">
+    <input type="text" id="form2Example1" class="form-control" name="username" placeholder="Username" />
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" id="pwd" class="form-control" name="password" placeholder="password" />
+  </div>
+
+  <!-- Submit button -->
+  <%= submit_tag "Sign in", class: 'btn btn-primary btn-block mb-4' %>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Not a member?  <%= link_to 'Sign up', signup_path %></p>
+  </div>
+<% end %>
 </div>
+</span>

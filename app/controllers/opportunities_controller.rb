@@ -10,13 +10,8 @@ class OpportunitiesController < ApplicationController
   end
 
   def index
-    unless session[:user_id]
-      flash[:error] = "You must be logged in to access this page."
-      redirect_to login_path
-    end
-    if :user_id == nil
-      flash[:error] = "You must be logged in to access this page."
-      redirect_to login_path
+    if require_login
+      return
     end
     
     @user_info = User.find session[:user_id]
@@ -91,6 +86,8 @@ class OpportunitiesController < ApplicationController
     unless session[:user_id]
       flash[:error] = "You must be logged in to access this page."
       redirect_to login_path
+      return true
     end
+    return false
   end
 end

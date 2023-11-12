@@ -3,7 +3,7 @@ Rottenpotatoes::Application.routes.draw do
   
   #root :to => redirect('/opportunities')
 
-  root 'sessions#home'
+  root 'sessions#login'
 
   resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
 

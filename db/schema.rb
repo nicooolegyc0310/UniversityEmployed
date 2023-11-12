@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231101195607) do
+ActiveRecord::Schema.define(version: 20231110201924) do
+
+  create_table "applications", force: :cascade do |t|
+    t.integer  "user_id",                            null: false
+    t.integer  "opportunity_id",                     null: false
+    t.string   "status",         default: "pending"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
 
   create_table "opportunities", force: :cascade do |t|
     t.string   "title"
@@ -24,20 +32,13 @@ ActiveRecord::Schema.define(version: 20231101195607) do
     t.integer  "capacity"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "applied_users"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
     t.string   "user_type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  create_table "applications", force: :cascade do |t|
-    t.references :user, null: false, foreign_key: true
-    t.references :opportunity, null: false, foreign_key: true
-    t.string :status, default: 'pending'
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

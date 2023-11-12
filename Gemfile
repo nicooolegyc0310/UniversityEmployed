@@ -14,6 +14,7 @@ gem 'jquery-rails'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem 'simplecov'
 end
 
 # for Heroku deployment - as described in Ap. A of ELLS book

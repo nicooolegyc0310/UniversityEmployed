@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  layout "plain"
+  
   def create
     @user = User.find_by(username: params[:username])
 
