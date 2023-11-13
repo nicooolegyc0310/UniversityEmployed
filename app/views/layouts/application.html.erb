@@ -10,14 +10,28 @@
   </head>
   <body>
     <%# These classes come from the Bootstrap CSS framework. %>
-    <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
-      <h1 class="title">University Employed!</h1>
-      <div class="ml-auto">
-        <% if session[:user_id] %>
-          <%= link_to 'Logout', logout_path, method: :destroy, class: 'btn btn-danger' %>
-        <% end %>
+    <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="<%= opportunities_path %>">UniversityEmployeed</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="<%= opportunities_path %>">Home <span class="sr-only">(current)</span></a>
       </div>
-    </nav>
+      <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="<%= users_path %>">My Profile <span class="sr-only">(current)</span></a>
+    </div>
+    </div>
+    <div class="ml-auto">
+    <%= link_to 'Logout', logout_path, method: :destroy, class: 'btn btn-danger' %>
+  </div>
+  </nav>
+  </div>
+  <br>
+
     <div class="container">
       <%# Render "flash" messages in our application. This loads _flash.erb %>
       <%= render 'layouts/flash' %>

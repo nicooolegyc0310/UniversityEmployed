@@ -1,0 +1,39 @@
+<h3> <%= @user_info.user_type.capitalize %> <%= @user_info.lastname %>. </h3>
+
+<% if @user_info.user_type == 'professor' %>
+    <h3>My research opportunities</h3>
+<% else %>
+    <h3> Applied to opportunities </h3>
+<% end %>
+
+<table class="table table-striped col-md-12" id="opportunities">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th> Duration </th>
+      <th>Capacity</th>
+      <th>More Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @my_opportunities.each do |opportunity| %>
+      <tr>
+        <td>
+          <%= opportunity.title %>
+        </td>
+        <td>
+          <%= opportunity.description %>
+        </td>
+        <td><%= opportunity.duration %></td>
+        <td><%= opportunity.capacity %></td>
+        <td><%= link_to "Edit", opportunity_path(opportunity) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @user_info.user_type == 'professor' %>
+  <%= link_to 'Add new opportunity', new_opportunity_path, class: 'btn btn-primary' %>
+<% end %>

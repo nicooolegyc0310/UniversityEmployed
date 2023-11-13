@@ -1,6 +1,6 @@
 class OpportunitiesController < ApplicationController
   before_action :force_index_redirect, only: [:index]
-  before_action :require_login, only: [:edit, :update, :show, :destroy]
+  before_action :require_login, only: [:edit, :update, :show, :destroy, :create, :index, :new]
 
 
   def show
@@ -10,10 +10,6 @@ class OpportunitiesController < ApplicationController
   end
 
   def index
-    if require_login
-      return
-    end
-    
     @user_info = User.find session[:user_id]
     # Filter the opportunities by the provided professor's name
     if params[:professor_name]
@@ -29,7 +25,12 @@ class OpportunitiesController < ApplicationController
   end
 
   def create
-    opportunity_params = params.require(:research_opportunity).permit(:title, :professor_name, :department, :description, :contact, :requirements, :duration, :capacity)
+    opportunity_params = params.require(:research_opportunity).permit(:title, :department, :description, :requirements, :duration, :capacity)
+    @user_info = User.find session[:user_id]
+    opportunity_params[:created_by_id] = @user_info.id
+    opportunity_params[:professor_name] = @user_info.firstname + " " + @user_info.lastname
+    opportunity_params[:contact] = @user_info.email
+
     @opportunity = Opportunity.create!(opportunity_params)
     flash[:notice] = "#{@opportunity.title} was successfully created."
     redirect_to opportunities_path
@@ -84,7 +85,7 @@ class OpportunitiesController < ApplicationController
 
   def require_login
     unless session[:user_id]
-      flash[:error] = "You must be logged in to access this page."
+      flash[:warning] = "You must be logged in to access this page."
       redirect_to login_path
       return true
     end

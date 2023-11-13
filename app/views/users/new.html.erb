@@ -43,15 +43,21 @@ body {
 
 <%= form_for @user do |f| %>
   <div class="form-outline mb-4">
-    <input type="text" id="form2Example1" class="form-control" name="username" placeholder="Username" />
+  <input type="text" id="form2Example1" class="form-control" name="user[firstname]" placeholder="First name" required="true" />
+</div>
+<div class="form-outline mb-4">
+<input type="text" id="form2Example1" class="form-control" name="user[lastname]" placeholder="Last name" required="true" />
+</div>
+  <div class="form-outline mb-4">
+    <input type="email" id="form2Example1" class="form-control" name="user[email]" placeholder="email" required="true" />
   </div>
 
   <div class="form-outline mb-4">
-    <input type="password" id="pwd" class="form-control" name="password" placeholder="password" />
+    <input type="password" id="pwd" class="form-control" name="user[password]" placeholder="password" required="true" />
   </div>
   <p> Occupation </p>
     <div class="form-outline mb-4">
-    <%= f.collection_radio_buttons(:user_type, [['Professor', 'professor'], ['Student', 'student'], ['Grad Student', 'grad_student']], :second, :first, class: 'form-check-input') %><br>
+    <%= f.collection_radio_buttons(:user_type, [['Professor', 'professor'], ['Student', 'student'], ['Grad Student', 'grad_student']], :second, :first, class: 'form-check-input' , required: true) %><br>
    </div>
     <%= f.submit("Create Account", class: 'btn btn-primary btn-block mb-4') %>
     

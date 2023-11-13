@@ -9,10 +9,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-      <%# Render "flash" messages in our application. This loads _flash.erb %>
-      <%= render 'layouts/flash' %>
       <main id="main">
         <%= yield %>
       </main>
+      <%# Render "flash" messages in our application. This loads _flash.erb %>
+      <%= render 'layouts/flash' %>
   </body>
 </html>

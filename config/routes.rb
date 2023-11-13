@@ -5,7 +5,7 @@ Rottenpotatoes::Application.routes.draw do
 
   root 'sessions#login'
 
-  resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
+  resources :users, only: [:new, :create, :edit, :update, :index, :destroy]
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'

@@ -1,5 +1,5 @@
 <!--  This file is app/views/opportunities/index.html.erb -->
-<h3> Welcome back <%= @user_info.user_type.capitalize %> <%= @user_info.username %>. </h3>
+<h3> Welcome back <%= @user_info.user_type.capitalize %> <%= @user_info.lastname %>. </h3>
 <h2>All Opportunities</h2>
 
 <%= form_tag(opportunities_path, method: "get", class: "form-inline my-4") do %>

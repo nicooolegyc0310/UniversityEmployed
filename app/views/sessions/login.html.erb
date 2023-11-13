@@ -36,15 +36,13 @@ body {
 
 </style>
 
-<span class="border">
-
 <div class="middle">
 <%= form_tag '/login', :class=>"form-signin" do %>
   <h2 class="text-center"> UniversityEmployeed </h2>
   <%= image_tag("home.jpg", width: 330, class: "img-fluid mb-4") %>
   <br>
   <div class="form-outline mb-4">
-    <input type="text" id="form2Example1" class="form-control" name="username" placeholder="Username" />
+    <input type="email" id="form2Example1" class="form-control" name="email" placeholder="email" />
   </div>
 
   <!-- Password input -->
@@ -61,4 +59,3 @@ body {
   </div>
 <% end %>
 </div>
-</span>
