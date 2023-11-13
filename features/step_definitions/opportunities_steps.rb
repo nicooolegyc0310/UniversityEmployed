@@ -5,7 +5,7 @@ Given /the following opportunities exist/ do |opportunities_table|
   end
 end
 
-Then /(.*) seed movies should exist/ do | n_seeds |
+Then /(.*) seed opportunities should exist/ do | n_seeds |
   expect(Opportunity.count).to eq n_seeds.to_i
 end
 

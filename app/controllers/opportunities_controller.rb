@@ -43,7 +43,7 @@ class OpportunitiesController < ApplicationController
   def update
     @opportunity = Opportunity.find params[:id]
 
-    opportunity_params = params.require(:research_opportunity).permit(:title, :professor_name, :department, :description, :contact, :requirements, :duration)
+    opportunity_params = params.require(:research_opportunity).permit(:title, :department, :description, :requirements, :duration, :capacity)
 
     @opportunity.update_attributes!(opportunity_params)
     flash[:notice] = "#{@opportunity.title} was successfully updated."
@@ -58,10 +58,6 @@ class OpportunitiesController < ApplicationController
   end
 
   private
-
-  def opportunity_params
-    params.require(:opportunity).permit(:title, :professor_name, :department, :description, :contact, :requirements, :duration, :capacity)
-  end
   
   def force_index_redirect
     #if !params.key?(:ratings) || !params.key?(:sort_by)

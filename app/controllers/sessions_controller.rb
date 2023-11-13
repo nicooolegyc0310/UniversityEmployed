@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to opportunities_path
     else
-      message = "Something went wrong"
+      message = "Incorrect username or password"
       redirect_to login_path, notice: message
     end
   end
