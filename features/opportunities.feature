@@ -28,7 +28,8 @@ Scenario: create a prof user and add, edit, and delete opportunity
   Given I visit the details page for "Job"
   When I follow "Edit"
   Then I change the title to "Job2"
-  Then I delete opportunity Job2
+  Given I visit the details page for "Job2"
+  When I follow "Delete"
   When I go to /opportunities
   Then I should not see "Job2"
 
@@ -39,6 +40,8 @@ Scenario: create student user and see all scenarios
 
 Scenario: login logout
   Then create a new professor with "test3@gmail.com" email, "test3" password, "test3" firstname, and "test3" lastname
+  Then I should see "Distributed Systems and Scalability"
+  When I go to /login
   Then I should see "Distributed Systems and Scalability"
   Then I log out
   When I try to log in with "test3@gmail.com" email and "test3" password/
