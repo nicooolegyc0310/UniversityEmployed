@@ -17,7 +17,7 @@ Scenario: try to login with incorrect credientals
   When I try to log in with "test@gmail.com" email and "pwd123" password/
   Then I should see "Incorrect username or password"
 
-Scenario: create a prof user and add and delete opportunity
+Scenario: create a prof user and add, edit, and delete opportunity
   Then create a new professor with "test@gmail.com" email, "test" password, "test" firstname, and "test" lastname
   When I go to /opportunities
   Then I follow "Add new opportunity"
@@ -25,9 +25,12 @@ Scenario: create a prof user and add and delete opportunity
   Then I should see "Job"
   When I go to /users
   Then I should see "Job"
-  Then I delete opportunity Job
+  Given I visit the details page for "Job"
+  When I follow "Edit"
+  Then I change the title to "Job2"
+  Then I delete opportunity Job2
   When I go to /opportunities
-  Then I should not see "Job"
+  Then I should not see "Job2"
 
 Scenario: create student user and see all scenarios
   Then create a new student with "test2@gmail.com" email, "test2" password, "test2" firstname, and "test2" lastname
@@ -41,7 +44,7 @@ Scenario: login logout
   When I try to log in with "test3@gmail.com" email and "test3" password/
   Then I should see "Distributed Systems and Scalability"
 
-Scenario: try to access unauthorized pagese
+Scenario: try to access unauthorized pages
   When I go to /opportunities
   Then I should see "You must be logged in to access this page."  
   When I go to /users

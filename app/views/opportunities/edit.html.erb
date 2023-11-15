@@ -1,5 +1,5 @@
 <h2>Edit Existing Opportunity</h2>
-<%= form_tag opportunities_path(@opportunity), :method => :put do %>
+<%= form_for @opportunity, url: opportunity_path(@opportunity), method: :put do %>
   <%= label :research_opportunity, :title, 'Title', class: 'col-form-label' %>
   <%= text_field :research_opportunity, 'title', class: 'form-control' %>
 
@@ -22,6 +22,6 @@
   <%= text_field :research_opportunity, 'duration', class: 'form-control' %>
 
   <br/>
-  <%= submit_tag 'Create Research Opportunity', class: 'btn btn-primary' %>
+  <%= submit_tag 'Edit Research Opportunity', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', opportunities_path, class: 'btn btn-secondary' %>
 <% end %>

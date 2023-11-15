@@ -47,7 +47,7 @@ class OpportunitiesController < ApplicationController
 
     @opportunity.update_attributes!(opportunity_params)
     flash[:notice] = "#{@opportunity.title} was successfully updated."
-    redirect_to opportunity(@opportunity)
+    redirect_to opportunity_path(@opportunity)
   end
 
   def destroy
