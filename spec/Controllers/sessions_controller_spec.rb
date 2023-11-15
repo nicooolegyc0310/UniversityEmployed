@@ -19,7 +19,7 @@ RSpec.describe SessionsController, type: :controller do
   describe 'POST #create' do
     context 'with valid credentials' do
       it 'logs in a user and redirects to opportunities_path' do
-        user = User.create(username: 'test_user', password: 'password', user_type: 'student')
+        user = User.create(email: 'test_user', firstname: "John", lastname: "Smith", password: 'password', user_type: 'student')
         post :create, params: { username: 'test_user', password: 'password' }
         expect(response).to redirect_to(login_path)
       end
@@ -29,7 +29,7 @@ RSpec.describe SessionsController, type: :controller do
       it 'redirects to login_path with a notice message' do
         post :create, params: { username: 'non_existent_user', password: 'invalid_password' }
         expect(session[:user_id]).to be_nil
-        expect(flash[:notice]).to eq('Something went wrong')
+        expect(flash[:notice]).to eq('Incorrect username or password')
         expect(response).to redirect_to(login_path)
       end
     end
@@ -37,7 +37,7 @@ RSpec.describe SessionsController, type: :controller do
 
   describe 'DELETE #destroy' do
     it 'logs out a user and redirects to login_path' do
-      user = User.create(username: 'test_user', password: 'password', user_type: 'student')
+      user = User.create(email: 'test_user', firstname: "John", lastname: "Smith", password: 'password', user_type: 'student')
       session[:user_id] = user.id
       delete :destroy
       expect(session[:user_id]).to be_nil

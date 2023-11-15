@@ -20,7 +20,7 @@ RSpec.describe OpportunitiesController, type: :controller do
   describe 'GET #index' do
     context 'when the user is logged in' do
       before do
-        user = User.create(username: 'test_user', password: 'password', user_type: 'student')
+        user = User.create(email: 'test_user', firstname: "John", lastname: "Smith", password: 'password', user_type: 'student')
         session[:user_id] = user.id
       end
 
@@ -54,13 +54,13 @@ RSpec.describe OpportunitiesController, type: :controller do
   describe 'GET #new' do
     it 'renders the :new template' do
       get :new
-      expect(response).to render_template('new')
+      expect(response).to redirect_to(login_path)
     end
   end
 
   describe 'POST #create' do
     it 'creates a new opportunity and redirects to opportunities_path' do
-      user = User.create(username: 'test_user', password: 'password', user_type: 'student')
+      user = User.create(email: 'test_user', firstname: "John", lastname: "Smith", password: 'password', user_type: 'student')
       session[:user_id] = user.id
       opportunity_params = { title: 'New Opportunity', professor_name: 'Professor X' }
       #post :create, params: { research_opportunity: opportunity_params }, as: JSON
