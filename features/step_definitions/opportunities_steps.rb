@@ -43,3 +43,9 @@ Given /I visit the details page for "(.*)"/ do |opportunity|
   end
   visit "/opportunities/" + opportunity_id.to_s()
 end
+
+When ('I enter {string} as my Filter by Professor') do |professor_name|
+  fill_in 'professor_name', with: professor_name
+end
+
+    

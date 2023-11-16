@@ -103,6 +103,7 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
 end
 
 Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
+  puts "Current page HTML: #{page.html}"
   regexp = Regexp.new(regexp)
 
   assert page.has_xpath?('//*', :text => regexp)

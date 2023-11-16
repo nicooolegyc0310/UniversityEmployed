@@ -9,9 +9,10 @@ Background: opportunties have been added to database
 | Distributed Systems and Scalability | Luca Carloni       | Computer Science | Participate in cutting-edge lab research to design and test large-scale distributed systems for modern web applications. | luca@cs.columbia.edu     | Understanding of computer networks, Lab experience with system deployments.    | Winter Semester 2023 |     2      |
 | Human-AI Interaction                | Gail E Kaiser      | Computer Science | Join our lab to design and test innovative methods of interaction between humans and artificial intelligence systems.    | kaiser@cs.columbia.edu   | Experience in UI/UX design, Lab experience with user testing methodologies.    | Spring Semester 2024 |     5      |
 | Augmented Reality Systems           | Stephen A. Edwards | Computer Science | Engage in lab work dedicated to developing augmented reality applications and testing their real-world implications.     | sedwards@cs.columbia.edu | Experience in AR/VR development, Lab experience with AR devices and platforms. | Fall Semester 2023   |     3      |
+| Augmented Reality Systems 2         | Stephen A. Edwards | Computer Science | Engage in lab work dedicated to developing augmented reality applications and testing their real-world implications.     | sedwards@cs.columbia.edu | Experience in AR/VR development, Lab experience with AR devices and platforms. | Spring Semester 2023 |     3      |
 
 Scenario: see all opportunities
- Then 3 seed opportunities should exist
+ Then 4 seed opportunities should exist
 
 Scenario: try to login with incorrect credientals
   When I try to log in with "test@gmail.com" email and "pwd123" password/
@@ -52,6 +53,19 @@ Scenario: try to access unauthorized pages
   Then I should see "You must be logged in to access this page."  
   When I go to /users
   Then I should see "You must be logged in to access this page."
+
+Scenario: sort by Professor 
+  Then create a new professor with "test3@gmail.com" email, "test3" password, "test3" firstname, and "test3" lastname
+  Then I should see "Distributed Systems and Scalability"
+  When I go to /login
+  Then I should see "Distributed Systems and Scalability"
+  Then I log out
+  When I try to log in with "test3@gmail.com" email and "test3" password/
+  Then I should see "Distributed Systems and Scalability"
+  When I enter "Stephen A. Edwards" as my Filter by Professor
+  Then I click on "Filter"
+  Then I should see "Augmented Reality Systems 2"
+  Then I should not see "Distributed Systems and Scalability"
 
 
 
