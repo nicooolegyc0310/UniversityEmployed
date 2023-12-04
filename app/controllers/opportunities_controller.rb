@@ -1,20 +1,21 @@
 class OpportunitiesController < ApplicationController
   before_action :force_index_redirect, only: [:index]
-  before_action :require_login, only: [:edit, :update, :show, :destroy, :create, :index, :new]
+  before_action :require_login, only: [:edit, :update, :show, :destroy, :create, :index, :new, :apply]
 
 
   def show
-    id = params[:id] # retrieve movie ID from URI route
-    @opportunity = Opportunity.find(id) # look up movie by unique ID
-    # will render app/views/movies/show.<extension> by default
+    id = params[:id] 
+    @opportunity = Opportunity.find(id)
+    @user_info = User.find session[:user_id]
+    @is_mine = @opportunity.created_by_id == @user_info.id
   end
 
   def index
     @user_info = User.find session[:user_id]
     # Filter the opportunities by the provided professor's name
     if params[:professor_name]
-      @opportunities = Opportunity.where(professor_name: params[:professor_name])
-    # Else retrieve all opportunities
+      @opportunities = Opportunity.where("lower(professor_name) LIKE ?", "%#{params[:professor_name].downcase}%")
+      # Else retrieve all opportunities
     else
       @opportunities = Opportunity.all
     end
@@ -38,24 +39,58 @@ class OpportunitiesController < ApplicationController
 
   def edit
     @opportunity = Opportunity.find params[:id]
+    @user_info = User.find session[:user_id]
+
+    if @user_info.id != @opportunity.created_by_id
+      flash[:warning] = "Can't edit opportunity you didn't create."
+      redirect_to opportunities_path
+    end
   end
 
   def update
     @opportunity = Opportunity.find params[:id]
+    @user_info = User.find session[:user_id]
 
     opportunity_params = params.require(:research_opportunity).permit(:title, :department, :description, :requirements, :duration, :capacity)
-
     @opportunity.update_attributes!(opportunity_params)
     flash[:notice] = "#{@opportunity.title} was successfully updated."
     redirect_to opportunity_path(@opportunity)
+
   end
 
   def destroy
     @opportunity = Opportunity.find(params[:id])
-    @opportunity.destroy
-    flash[:notice] = "Opportunity '#{@opportunity.title}' deleted."
+    @user_info = User.find session[:user_id]
+    if @user_info.id == @opportunity.created_by_id
+      @opportunity.destroy
+      flash[:notice] = "Opportunity '#{@opportunity.title}' deleted."
+      redirect_to opportunities_path
+    else
+      flash[:warning] = "Can't delete opportunity you didn't create."
+      redirect_to opportunities_path
+    end
+  end
+
+  def apply
+    @opportunity = Opportunity.find(params[:id])
+    @user_info = User.find session[:user_id]
+
+    # Check if the user has already applied to this opportunity
+    if @opportunity.applications.where(user_id: @user_info.id).exists?
+      flash[:notice] = "You have already applied to this opportunity."
+    else
+      # Create a new application record
+      @application = @opportunity.applications.build(user_id: @user_info.id, status: 'pending')
+
+      if @application.save
+        @opportunity.increment!(:applied_users)
+        flash[:success] = "Application submitted."
+      end
+    end
+
     redirect_to opportunities_path
   end
+
 
   private
   

@@ -1,61 +1,75 @@
 <style>
+  body {
+    height: 100vh;
+    display: flex;
+    margin: 0;
+  }
 
-body {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5f5f5;
-}
+  /* Left half - About Page */
+  .about-section {
+    width: 50%;
+    background-color: #ffffff;
+    padding: 50px;
+    box-sizing: border-box;
+  }
 
+  /* Right half - Login Form */
+  .login-section {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+  }
 
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
+  .form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
 
-.form-signin .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
 
-.middle {
-  padding: 15px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-}
-
+  .middle {
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
 </style>
 
-<div class="middle">
-<%= form_tag '/login', :class=>"form-signin" do %>
-  <h2 class="text-center"> UniversityEmployeed </h2>
-  <%= image_tag("home.jpg", width: 330, class: "img-fluid mb-4") %>
-  <br>
-  <div class="form-outline mb-4">
-    <input type="email" id="form2Example1" class="form-control" name="email" placeholder="email" />
-  </div>
+<div class="login-section">
+  <div class="middle">
+    <%= form_tag '/login', :class=>"form-signin" do %>
+      <h2 class="text-center"> UniversityEmployeed </h2>
+      <%= image_tag("home.jpg", width: 330, class: "img-fluid mb-4") %>
+      <br>
+      <p class = "text-center"> The place to find and post research opportunities for Columbia students </p>
+      <div class="form-outline mb-4">
+        <input type="email" id="form2Example1" class="form-control" name="email" placeholder="email" />
+      </div>
 
-  <!-- Password input -->
-  <div class="form-outline mb-4">
-    <input type="password" id="pwd" class="form-control" name="password" placeholder="password" />
-  </div>
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="pwd" class="form-control" name="password" placeholder="password" />
+      </div>
 
-  <!-- Submit button -->
-  <%= submit_tag "Sign in", class: 'btn btn-primary btn-block mb-4' %>
+      <!-- Submit button -->
+      <%= submit_tag "Sign in", class: 'btn btn-primary btn-block mb-4' %>
 
-  <!-- Register buttons -->
-  <div class="text-center">
-    <p>Not a member?  <%= link_to 'Sign up', signup_path %></p>
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p>Not a member? <%= link_to 'Sign up', signup_path %></p>
+      </div>
+    <% end %>
   </div>
-<% end %>
 </div>

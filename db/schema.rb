@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231113162556) do
+ActiveRecord::Schema.define(version: 20231204165851) do
 
   create_table "applications", force: :cascade do |t|
     t.integer  "user_id",                            null: false
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20231113162556) do
     t.text     "requirements"
     t.string   "duration"
     t.integer  "capacity"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "applied_users"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "applied_users",  default: 0
     t.integer  "created_by_id"
   end
 

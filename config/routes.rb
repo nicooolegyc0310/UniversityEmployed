@@ -1,5 +1,9 @@
 Rottenpotatoes::Application.routes.draw do
-  resources :opportunities
+  resources :opportunities do
+    member do
+      post 'apply'
+    end
+  end
   
   #root :to => redirect('/opportunities')
 

@@ -1,6 +1,6 @@
 <h3> <%= @user_info.user_type.capitalize %> <%= @user_info.lastname %>. </h3>
 
-<% if @user_info.user_type == 'professor' %>
+<% if @user_info.user_type == 'professor' || @user_info.user_type == 'grad_student' %>
     <h3>My research opportunities</h3>
 <% else %>
     <h3> Applied to opportunities </h3>
@@ -13,7 +13,12 @@
       <th>Description</th>
       <th> Duration </th>
       <th>Capacity</th>
-      <th>More Info</th>
+
+      <% if @user_info.user_type == 'professor' || @user_info.user_type == 'grad_student' %>
+        <th>Edit</th>
+      <% else %>
+        <th>More Info</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -27,8 +32,13 @@
         </td>
         <td><%= opportunity.duration %></td>
         <td><%= opportunity.capacity %></td>
-        <td><%= link_to "Edit", opportunity_path(opportunity) %>
-        </td>
+
+        <% if @user_info.user_type == 'professor' || @user_info.user_type == 'grad_student' %>
+          <td><%= link_to "Edit", opportunity_path(opportunity) %></td>
+        <% else %>
+          <td><%= link_to "More", opportunity_path(opportunity) %></td>
+        <% end %>
+
       </tr>
     <% end %>
   </tbody>

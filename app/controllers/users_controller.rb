@@ -18,8 +18,14 @@ class UsersController < ApplicationController
 
   def index
     @user_info = User.find(session[:user_id])
-    if @user_info.user_type == "professor"
+    if @user_info.user_type == "professor" || @user_info.user_type == "grad_student"
       @my_opportunities = Opportunity.where(created_by_id: @user_info.id)
+    end
+
+    if @user_info.user_type == "student"
+      @my_opportunities = Opportunity.joins(:applications)
+      .where(applications: { user_id: @user_info.id })
+      .distinct
     end
 
     render layout: "application"

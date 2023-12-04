@@ -1,13 +1,28 @@
 <!--  app/views/opportunities/show.html.erb -->
-<h2>Details about <em><%= @opportunity.title %></em></h2>
+<h2><%= @opportunity.title %></em></h2>
 
-<h3>Description:</h3>
-<p id="description">
-  <%= @opportunity.description %>
-</p>
+<p><strong>Professor / Grad Student Name:</strong> <%= @opportunity.professor_name %></p>
+<p><strong>Department:</strong> <%= @opportunity.department %></p>
+<p><strong>Description:</strong> <%= @opportunity.description %></p>
+<p><strong>Contact:</strong> <%= @opportunity.contact %></p>
+<p><strong>Requirements:</strong> <%= @opportunity.requirements %></p>
+<p><strong>Duration:</strong> <%= @opportunity.duration %></p>
+<p><strong>Capacity:</strong> <%= @opportunity.capacity %></p>
+<p><strong>Applied Users:</strong> <%= @opportunity.applied_users.nil? ? 0 : @opportunity.applied_users %></p>
+<p><strong>Last Updated:</strong> <%= @opportunity.updated_at.strftime('%B %e, %Y %l:%M %p') %></p>
 
 <div class="row">
-  <%= link_to 'Edit', edit_opportunity_path(@opportunity), class: 'btn btn-primary col-2' %>
-  <%= link_to 'Delete', opportunity_path(@opportunity), 'data-method': 'delete', 'data-confirm': 'Are you sure?', class: 'btn btn-danger col-2' %>
+  <% if @is_mine %>
+    <%= link_to 'Edit', edit_opportunity_path(@opportunity), class: 'btn btn-primary col-2' %>
+    <%= link_to 'Delete', opportunity_path(@opportunity), 'data-method': 'delete', 'data-confirm': 'Are you sure?', class: 'btn btn-danger col-2' %>
+  <% else %>
+    <!--
+    <%= link_to 'Edit', '#', class: 'btn btn-primary col-2 disabled', disabled: true %>
+    <%= link_to 'Delete', '#', 'data-method': 'delete', 'data-confirm': 'Are you sure?', class: 'btn btn-danger col-2 disabled', disabled: true %>
+    -->
+  <% end %>
+  <% if @user_info.user_type == "student" %>
+    <%= link_to 'Apply', apply_opportunity_path(@opportunity), method: :post, class: 'btn btn-primary col-2' %>
+  <% end %>
   <%= link_to 'Back', opportunities_path, class: 'btn btn-primary col-2' %>
 </div>
