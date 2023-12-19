@@ -38,6 +38,19 @@ Scenario: create student user and see all scenarios
   Then create a new student with "test2@gmail.com" email, "test2" password, "test2" firstname, and "test2" lastname
   When I go to /opportunities
   Then I should see "Distributed Systems and Scalability"
+  Then I log out
+  When I try to log in with "test2@gmail.com" email and "test2" password/
+  Then I should see "Distributed Systems and Scalability"
+
+
+
+Scenario: create grad student user and see all scenarios
+  Then create a new grad student with "test8@gmail.com" email, "test2" password, "test2" firstname, and "test2" lastname
+  When I go to /opportunities
+  Then I should see "Distributed Systems and Scalability"
+  Then I log out
+  When I try to log in with "test8@gmail.com" email and "test2" password/
+  Then I should see "Distributed Systems and Scalability"
 
 Scenario: login logout
   Then create a new professor with "test3@gmail.com" email, "test3" password, "test3" firstname, and "test3" lastname
@@ -66,6 +79,38 @@ Scenario: sort by Professor
   Then I click on "Filter"
   Then I should see "Augmented Reality Systems 2"
   Then I should not see "Distributed Systems and Scalability"
+
+Scenario: student applies to Opportunity
+  Then create a new student with "test4@gmail.com" email, "test4" password, "test4" firstname, and "test4" lastname
+  When I go to /opportunities
+  Given I visit the details page for "Distributed Systems and Scalability"
+  Then I should see "Duration: Winter Semester 2023"
+  When I follow "Apply"
+  Then I go to /users
+
+Scenario: professor edits opportunity he didn't create
+  Then create a new professor with "test4@gmail.com" email, "test4" password, "test4" firstname, and "test4" lastname
+  When I go to /opportunities
+  Given I visit the details page for "Distributed Systems and Scalability"
+  Then I go to /opportunities/1/edit
+  Then I should see "Can't edit opportunity you didn't create."
+
+Scenario: student re-applies to Opportunity
+  Then create a new student with "test5@gmail.com" email, "test4" password, "test4" firstname, and "test4" lastname
+  When I go to /opportunities
+  Given I visit the details page for "Distributed Systems and Scalability"
+  Then I should see "Duration: Winter Semester 2023"
+  When I follow "Apply"
+  Then I go to /users
+  Given I visit the details page for "Distributed Systems and Scalability"
+  When I follow "Apply"
+  Then I should see "You have already applied to this opportunity."
+
+
+
+
+
+
 
 
 

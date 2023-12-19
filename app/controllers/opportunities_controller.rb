@@ -65,9 +65,6 @@ class OpportunitiesController < ApplicationController
       @opportunity.destroy
       flash[:notice] = "Opportunity '#{@opportunity.title}' deleted."
       redirect_to opportunities_path
-    else
-      flash[:warning] = "Can't delete opportunity you didn't create."
-      redirect_to opportunities_path
     end
   end
 
@@ -76,6 +73,7 @@ class OpportunitiesController < ApplicationController
     @user_info = User.find session[:user_id]
 
     # Check if the user has already applied to this opportunity
+    
     if @opportunity.applications.where(user_id: @user_info.id).exists?
       flash[:notice] = "You have already applied to this opportunity."
     else
@@ -84,7 +82,7 @@ class OpportunitiesController < ApplicationController
 
       if @application.save
         @opportunity.increment!(:applied_users)
-        flash[:success] = "Application submitted."
+        flash[:notice] = "Application submitted."
       end
     end
 

@@ -12,7 +12,7 @@
       <th>Title</th>
       <th>Description</th>
       <th> Duration </th>
-      <th>Capacity</th>
+      <th>Applications</th>
 
       <% if @user_info.user_type == 'professor' || @user_info.user_type == 'grad_student' %>
         <th>Edit</th>
@@ -31,7 +31,7 @@
           <%= opportunity.description %>
         </td>
         <td><%= opportunity.duration %></td>
-        <td><%= opportunity.capacity %></td>
+        <td><%= opportunity.applied_users %></td>
 
         <% if @user_info.user_type == 'professor' || @user_info.user_type == 'grad_student' %>
           <td><%= link_to "Edit", opportunity_path(opportunity) %></td>

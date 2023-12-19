@@ -34,6 +34,10 @@ When /^(?:|I )go to (.+)$/ do |page_name|
   visit page_name
 end
 
+When /^(?:|I )POST to (.+)$/ do |page_name|
+  visit page_name, :post
+end
+
 Given /I visit the details page for "(.*)"/ do |opportunity|
   opportunity_id = -1
   Opportunity.all.each do |search_opportunity|

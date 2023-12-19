@@ -1,6 +1,5 @@
 <!--  This file is app/views/opportunities/index.html.erb -->
-<h3> Welcome Back <%= @user_info.user_type.capitalize %> <%= @user_info.lastname %>. </h3>
-<h2>All Opportunities</h2>
+<h2>Available Opportunities</h2>
 
 <%= form_tag(opportunities_path, method: "get", class: "form-inline my-4") do %>
   <div class="form-group">
@@ -46,24 +45,4 @@
 
 <% if @user_info.user_type == 'professor' ||  @user_info.user_type == 'grad_student' %>
   <%= link_to 'Add new opportunity', new_opportunity_path, class: 'btn btn-primary' %>
-<% elsif @user_info.user_type == 'student' %>
-  <h2>Your Applications</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Opportunity Title</th>
-        <th>Status</th>
-        <th>Applied On</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @user_info.applications.each do |application| %>
-        <tr>
-          <td><%= application.opportunity.title %></td>
-          <td><%= application.status.capitalize %></td>
-          <td><%= application.created_at.strftime("%B %d, %Y") %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 <% end %>

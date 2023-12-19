@@ -1,25 +1,25 @@
 <h2>Edit Existing Opportunity</h2>
 <%= form_for @opportunity, url: opportunity_path(@opportunity), method: :put do %>
   <%= label :research_opportunity, :title, 'Title', class: 'col-form-label' %>
-  <%= text_field :research_opportunity, 'title', class: 'form-control' %>
+  <%= text_field :research_opportunity, 'title', class: 'form-control', value: @opportunity.title %>
 
   <%= label :research_opportunity, :professor_name, 'Professor', class: 'col-form-label' %>
-  <%= text_field :research_opportunity, 'professor_name', class: 'form-control' %>
+  <%= text_field :research_opportunity, 'professor_name', class: 'form-control', value: @opportunity.professor_name %>
 
   <%= label :research_opportunity, :department, 'Deparment', class: 'col-form-label' %>
-  <%= text_field :research_opportunity, 'department', class: 'form-control' %>
+  <%= text_field :research_opportunity, 'department', class: 'form-control', value: @opportunity.department %>
 
   <%= label :research_opportunity, :description, 'Description', class: 'col-form-label' %>
-  <%= text_field :research_opportunity, 'description', class: 'form-control' %>
+  <%= text_field :research_opportunity, 'description', class: 'form-control', value: @opportunity.description %>
 
   <%= label :research_opportunity, :contact, 'Contact', class: 'col-form-label' %>
-  <%= text_field :research_opportunity, 'contact', class: 'form-control' %>
+  <%= text_field :research_opportunity, 'contact', class: 'form-control', value: @opportunity.contact %>
 
   <%= label :research_opportunity, :requirements, 'Requirements', class: 'col-form-label' %>
-  <%= text_field :research_opportunity, 'requirements', class: 'form-control' %>
+  <%= text_field :research_opportunity, 'requirements', class: 'form-control', value: @opportunity.requirements %>
 
   <%= label :research_opportunity, :duration, 'Duration', class: 'col-form-label' %>
-  <%= text_field :research_opportunity, 'duration', class: 'form-control' %>
+  <%= text_field :research_opportunity, 'duration', class: 'form-control', value: @opportunity.duration %>
 
   <br/>
   <%= submit_tag 'Edit Research Opportunity', class: 'btn btn-primary' %>

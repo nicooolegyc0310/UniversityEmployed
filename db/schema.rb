@@ -11,15 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231218122301) do
+ActiveRecord::Schema.define(version: 20231218165852) do
 
   create_table "applications", force: :cascade do |t|
-    t.integer  "user_id",                            null: false
-    t.integer  "opportunity_id",                     null: false
-    t.string   "status",         default: "pending"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "user_id",                              null: false
+    t.integer  "opportunity_id",                       null: false
+    t.string   "status",           default: "pending"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.text     "application_text"
+    t.string   "resume"
   end
+
+  add_index "applications", ["opportunity_id"], name: "index_applications_on_opportunity_id"
 
   create_table "opportunities", force: :cascade do |t|
     t.string   "title"
@@ -29,9 +33,9 @@ ActiveRecord::Schema.define(version: 20231218122301) do
     t.string   "contact"
     t.text     "requirements"
     t.string   "duration"
+    t.integer  "capacity"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.integer  "capacity"
     t.integer  "applied_users",  default: 0
     t.integer  "created_by_id"
   end

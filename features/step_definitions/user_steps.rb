@@ -5,7 +5,7 @@ Then /create a new student with "(.*)" email, "(.*)" password, "(.*)" firstname,
   fill_in("Last name", :with => lastname)
   fill_in("email", :with => email)
   fill_in("password", :with => pwd)
-  choose("user_user_type_professor")
+  choose("user_user_type_student")
   click_button("Create Account")
 end
 
@@ -16,6 +16,16 @@ Then /create a new professor with "(.*)" email, "(.*)" password, "(.*)" firstnam
   fill_in("email", :with => email)
   fill_in("password", :with => pwd)
   choose("user_user_type_professor")
+  click_button("Create Account")
+end
+
+Then /create a new grad student with "(.*)" email, "(.*)" password, "(.*)" firstname, and "(.*)" lastname/ do | email, pwd, firstname, lastname|
+  visit "/signup"
+  fill_in("First name", :with => firstname)
+  fill_in("Last name", :with => lastname)
+  fill_in("email", :with => email)
+  fill_in("password", :with => pwd)
+  choose("user_user_type_grad_student")
   click_button("Create Account")
 end
 
