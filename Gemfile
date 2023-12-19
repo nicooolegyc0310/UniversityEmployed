@@ -19,6 +19,8 @@ end
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
+  gem 'shoulda-matchers', '~> 4.0'
+  gem 'factory_bot_rails'
   gem 'byebug'
   gem 'database_cleaner'
   gem 'cucumber-rails', require: false

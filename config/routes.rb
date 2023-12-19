@@ -1,4 +1,6 @@
 Rottenpotatoes::Application.routes.draw do
+  get 'application/index', to: 'application#index'
+  
   resources :opportunities do
     member do
       post 'apply'

@@ -20,14 +20,14 @@ RSpec.describe SessionsController, type: :controller do
     context 'with valid credentials' do
       it 'logs in a user and redirects to opportunities_path' do
         user = User.create(email: 'test_user', firstname: "John", lastname: "Smith", password: 'password', user_type: 'student')
-        post :create, params: { username: 'test_user', password: 'password' }
+        post :create, params: { email: 'test_user', password: 'password' }
         expect(response).to redirect_to(login_path)
       end
     end
 
     context 'with invalid credentials' do
       it 'redirects to login_path with a notice message' do
-        post :create, params: { username: 'non_existent_user', password: 'invalid_password' }
+        post :create, params: { email: 'non_existent_user', password: 'invalid_password' }
         expect(session[:user_id]).to be_nil
         expect(flash[:notice]).to eq('Incorrect username or password')
         expect(response).to redirect_to(login_path)
